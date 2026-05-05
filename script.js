@@ -6,8 +6,8 @@
   'use strict';
 
   /* ── 1. HAMBURGER MENU ── */
-  const hamburger = document.getElementById('hamburger');
-  const mobileNav = document.getElementById('mobileNav');
+  const hamburger  = document.getElementById('hamburger');
+  const mobileNav  = document.getElementById('mobileNav');
   const mobileLinks = mobileNav ? mobileNav.querySelectorAll('a') : [];
 
   function toggleMenu(open) {
@@ -40,7 +40,7 @@
   }
 
   /* ── 2. ACTIVE NAV HIGHLIGHT ON SCROLL ── */
-  const allNavLinks = document.querySelectorAll('nav a, .mobile-nav a');
+  const allNavLinks    = document.querySelectorAll('nav a, .mobile-nav a');
   const scrollSections = [];
 
   // Collect all elements with IDs referenced in nav
@@ -84,27 +84,30 @@
   }
 
   /* ── 4. CONTACT FORM → WHATSAPP ── */
-  const form = document.getElementById('contactForm');
-  const btnSubmit = document.getElementById('btnSubmit');
+  const form       = document.getElementById('contactForm');
+  const btnSubmit  = document.getElementById('btnSubmit');
+  const WA_NUMBER  = '5562900000000'; // ← Substitua pelo número real
 
   if (form && btnSubmit) {
     btnSubmit.addEventListener('click', () => {
-      const name = document.getElementById('fName')?.value.trim();
-      const phone = document.getElementById('fPhone')?.value.trim();
+      const name    = document.getElementById('fName')?.value.trim();
+      const phone   = document.getElementById('fPhone')?.value.trim();
+      const service = document.getElementById('fService')?.value;
       const message = document.getElementById('fMessage')?.value.trim();
 
       if (!name) { alert('Por favor, informe seu nome.'); return; }
-      if (!phone) { alert('Por favor, informe seu WhatsApp.'); return; }
+      if (!phone){ alert('Por favor, informe seu WhatsApp.'); return; }
 
       const text = [
         `Olá! Gostaria de agendar um horário. 🌸`,
         `*Nome:* ${name}`,
-        phone ? `*WhatsApp:* ${phone}` : null,
-        service ? `*Serviço:* ${service}` : null,
+        phone   ? `*WhatsApp:* ${phone}`   : null,
+        service ? `*Serviço:* ${service}`  : null,
         message ? `*Mensagem:* ${message}` : null,
       ].filter(Boolean).join('\n');
 
-      
+      const url = `https://wa.me/5562998758567?text=Gostaria%20de%20marcar%20um%20hor%C3%A1rio!`;
+      window.open(url, '_blank');
     });
   }
 
@@ -129,7 +132,7 @@
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.style.opacity = '1';
+          entry.target.style.opacity   = '1';
           entry.target.style.transform = 'translateY(0)';
           observer.unobserve(entry.target);
         }
@@ -137,8 +140,8 @@
     }, { threshold: 0.12 });
 
     fadeEls.forEach((el, i) => {
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(24px)';
+      el.style.opacity    = '0';
+      el.style.transform  = 'translateY(24px)';
       el.style.transition = `opacity 0.6s ease ${(i % 3) * 0.12}s, transform 0.6s ease ${(i % 3) * 0.12}s`;
       observer.observe(el);
     });
