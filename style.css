@@ -306,7 +306,7 @@ nav a.active::after   { width: 100%; }
   background: var(--cream);
   padding: 90px var(--px-desktop);
 }
-.services-inner { max-width: 1200px; margin: 0 auto; }
+.services-inner { max-width: 2000px; margin: 0 auto; }
 .services-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -314,19 +314,23 @@ nav a.active::after   { width: 100%; }
 }
 .services-grid--two {
   grid-template-columns: repeat(2, 1fr);
-  max-width: 900px;
+  max-width: auto;
   margin: 0 auto;
+  height: auto;
+  width: 1500px;
+  display: flex;
+ gap: 20px;
 }
 .service-card {
   position: relative; overflow: hidden;
   aspect-ratio: 4/5; cursor: pointer;
 }
-.service-card img {
+.service-card video {
   width: 100%; height: 100%; object-fit: cover;
   transition: transform 0.7s ease;
   filter: brightness(0.6) saturate(0.8);
 }
-.service-card:hover img {
+.service-card:hover video {
   transform: scale(1.06);
   filter: brightness(0.4) saturate(0.6);
 }
@@ -525,7 +529,7 @@ footer {
 /* ═══════════════════════════════════════════════════
    RESPONSIVIDADE — MOBILE  (max-width: 768px)
 ═══════════════════════════════════════════════════ */
-@media (max-width: 768px) {
+@media (max-width: 1560px) {
 
   /* Header: show hamburger, hide desktop nav */
   header          { padding: 0 var(--px-mobile); }
